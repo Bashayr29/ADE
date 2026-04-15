@@ -5,9 +5,8 @@
 param location string = resourceGroup().location
 
 @description('The number of nodes in the default node pool')
-@minValue(1)
-@maxValue(10)
-param nodeCount int = 1
+@allowed(['1', '2', '3', '5', '10'])
+param nodeCount string = '1'
 
 @description('The VM size for the node pool')
 @allowed([
@@ -47,7 +46,7 @@ resource aksCluster 'Microsoft.ContainerService/managedClusters@2024-02-01' = {
     agentPoolProfiles: [
       {
         name: 'nodepool1'
-        count: nodeCount
+        count: int(nodeCount)
         vmSize: nodeVmSize
         mode: 'System'
         osType: 'Linux'

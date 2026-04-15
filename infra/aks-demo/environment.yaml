@@ -6,7 +6,7 @@ parameters:
 - id: "nodeCount"
   name: "Node Count"
   description: "Number of nodes in the default node pool"
-  type: "int"
+  type: "string"
   default: "1"
   allowed:
     - "1"
