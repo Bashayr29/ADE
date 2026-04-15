@@ -10,12 +10,12 @@ param nodeCount string = '1'
 
 @description('The VM size for the node pool')
 @allowed([
-  'Standard_B2s'
-  'Standard_B4ms'
   'Standard_D2s_v3'
   'Standard_D4s_v3'
+  'Standard_D2ads_v5'
+  'Standard_D4ads_v5'
 ])
-param nodeVmSize string = 'Standard_B2s'
+param nodeVmSize string = 'Standard_D2s_v3'
 
 // Variables for resource naming
 var uniqueSuffix = uniqueString(resourceGroup().id)
