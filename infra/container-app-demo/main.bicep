@@ -13,7 +13,7 @@ param cpuCore string = '0.5'
 param memorySize string = '1'
 
 @description('Container image to deploy')
-param containerImage string = 'mcr.microsoft.com/azuredocs/containerapps-helloworld:latest'
+param containerImage string = "bashayracr.azurecr.io/hi-app:v1"
 
 // Variables for resource naming
 var uniqueSuffix = uniqueString(resourceGroup().id)

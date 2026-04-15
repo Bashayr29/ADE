@@ -1,0 +1,31 @@
+name: AKSDemo
+summary: Simple AKS cluster deployment using Bicep.
+description: Deploys an Azure Kubernetes Service (AKS) cluster with a single node pool and Log Analytics monitoring.
+templatePath: main.bicep
+parameters:
+- id: "nodeCount"
+  name: "Node Count"
+  description: "Number of nodes in the default node pool"
+  type: "int"
+  default: "1"
+  allowed:
+    - "1"
+    - "2"
+    - "3"
+    - "5"
+    - "10"
+- id: "nodeVmSize"
+  name: "Node VM Size"
+  description: "The VM size for each node"
+  type: "string"
+  default: "Standard_B2s"
+  allowed:
+    - "Standard_B2s"
+    - "Standard_B4ms"
+    - "Standard_D2s_v3"
+    - "Standard_D4s_v3"
+- id: "location"
+  name: "Location"
+  description: "Location to deploy the resources. Defaults to the resource group's region."
+  type: "string"
+runner: Bicep
