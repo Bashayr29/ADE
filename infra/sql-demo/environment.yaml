@@ -1,0 +1,43 @@
+name: SQLDatabaseDemo
+summary: Deploy a managed Azure database with a selectable engine using Bicep.
+description: >
+  Provisions a managed database server on Azure with your choice of engine:
+  Azure SQL Database, Azure Database for PostgreSQL Flexible Server, or
+  Azure Database for MySQL Flexible Server. Choose the service tier, admin
+  credentials, and target region. A firewall rule is automatically created
+  to allow connections from other Azure services.
+templatePath: main.bicep
+parameters:
+- id: "databaseEngine"
+  name: "Database Engine"
+  description: "The managed database engine to provision"
+  type: "string"
+  default: "sqlserver"
+  allowed:
+    - "sqlserver"
+    - "postgresql"
+    - "mysql"
+- id: "skuTier"
+  name: "Service Tier"
+  description: "The compute/pricing tier for the database server. Basic = smallest/cheapest, Premium = highest performance."
+  type: "string"
+  default: "Basic"
+  allowed:
+    - "Basic"
+    - "Standard"
+    - "Premium"
+- id: "adminUsername"
+  name: "Admin Username"
+  description: "The administrator login name for the database server"
+  type: "string"
+  default: "sqladmin"
+- id: "adminPassword"
+  name: "Admin Password"
+  description: "The administrator password for the database server (min 8 chars, must include uppercase, lowercase, number, and symbol)"
+  type: "string"
+  secret: true
+- id: "location"
+  name: "Location"
+  description: "Azure region to deploy into. Defaults to the resource group's region."
+  type: "string"
+runner: Bicep
